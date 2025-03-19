@@ -58,7 +58,7 @@ function Login() {
         try {
             console.log(values);
 
-            //Uncomment if your don't want OTP
+            //Comment if your don't want OTP
             setActiveForm("otp")
 
         } catch (error) {
