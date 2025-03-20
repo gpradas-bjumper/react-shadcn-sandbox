@@ -68,6 +68,7 @@ function AppSidebar() {
                             <a href="/" className="max-h-fit">
                                 <img
                                 src={BjumperLogo}
+                                data-test-id="company-logo"
                                 className="block h-full"
                                 height="35"
                                 />

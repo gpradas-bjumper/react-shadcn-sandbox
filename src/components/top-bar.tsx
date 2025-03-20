@@ -27,6 +27,7 @@ function TopBar() {
                             <img
                                 className="block ml-2 h-full"
                                 src={BjumperLogo}
+                                data-test-id="company-logo"
                                 alt="Company Logo"
                             />
                         </a>
