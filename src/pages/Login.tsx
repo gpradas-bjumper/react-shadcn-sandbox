@@ -100,7 +100,7 @@ function Login() {
 
     return (
         <>
-        <Card className=" shadow-none w-100  absolute top-[50%] left-[50%] translate-[-50%]">
+        <Card className="shadow-none w-100  absolute top-[50%] left-[50%] translate-[-50%]">
             <CardHeader>
                 <CardTitle>
                     <div className="mt-xs flex justify-center">
@@ -116,9 +116,9 @@ function Login() {
             <CardContent>
                 { activeForm === "login" ? (
                     <Form {...form} key="form-1">
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-3xl mx-auto">
+                        <form data-testid="login-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 max-w-3xl mx-auto">
 
-                            <p className="text-sm">Introduce your acccess credentials</p>
+                            <p className="text-sm">Introduce your access credentials</p>
 
                             <FormField
                                 control={form.control}
@@ -129,8 +129,8 @@ function Login() {
                                         <FormControl>
                                             <Input
                                                 placeholder="E-mail"
-
                                                 type="email"
+                                                data-testid="email-input"
                                                 {...field} />
                                         </FormControl>
                                         <FormMessage/>
@@ -145,16 +145,17 @@ function Login() {
                                     <FormItem className="mb-5">
                                         <FormLabel>Password</FormLabel>
                                         <FormControl>
-                                            <PasswordInput placeholder="Password" {...field} />
+                                            <PasswordInput
+                                                data-testid="password-input" placeholder="Password" {...field} />
                                         </FormControl>
                                         <FormMessage/>
                                     </FormItem>
                                 )}
                             />
 
-                            <Button className="mb-2 w-full" type="submit">Submit</Button>
+                            <Button data-testid="login-submit-button" className="mb-2 w-full" type="submit">Submit</Button>
                             <div className="w-full flex justify-end">
-                                <Button variant="ghost" onClick={() => setActiveForm('recovery')}>I forgot my
+                                <Button data-testid="forgot-password-button" variant="ghost" onClick={() => setActiveForm('recovery')}>I forgot my
                                     password</Button>
                             </div>
                         </form>
@@ -163,7 +164,7 @@ function Login() {
                     : activeForm === "otp" ?
                         (
                             <Form {...OTPForm} key="form-2">
-                                <form onSubmit={OTPForm.handleSubmit(OTPOnSubmit)} className="space-y-8 max-w-3xl mx-auto">
+                                <form data-testid="otp-form" onSubmit={OTPForm.handleSubmit(OTPOnSubmit)} className="space-y-8 max-w-3xl mx-auto">
 
                             <FormField
                                 control={OTPForm.control}
@@ -172,7 +173,7 @@ function Login() {
                                     <FormItem>
                                         <FormLabel className="mb-5">One-Time Password</FormLabel>
                                         <FormControl>
-                                            <InputOTP containerClassName="flex justify-center mb-5" maxLength={6} {...field}>
+                                            <InputOTP data-testid="otp-input" containerClassName="flex justify-center mb-5" maxLength={6} {...field}>
                                                 <InputOTPGroup>
                                                     <InputOTPSlot index={0} />
                                                     <InputOTPSlot index={1} />
@@ -188,9 +189,9 @@ function Login() {
                                     </FormItem>
                                 )}
                             />
-                            <Button className="w-full mb-5" type="submit">Submit</Button>
+                            <Button data-testid="otp-submit-button" className="w-full mb-5" type="submit">Submit</Button>
                             <div className="w-full flex justify-end">
-                                <Button variant="ghost" onClick={() => setActiveForm('login')}>Back</Button>
+                                <Button data-testid="back-button" variant="ghost" onClick={() => setActiveForm('login')}>Back</Button>
                             </div>
                         </form>
                     </Form>
@@ -198,18 +199,20 @@ function Login() {
                         : activeForm === "recovery" ?
                             (
                             <Form {...recoveryForm} key="form-3">
-                                <form onSubmit={recoveryForm.handleSubmit(recoveryFormOnSubmit)} className="space-y-8 max-w-3xl mx-auto">
+                                <form data-testid="recovery-form" onSubmit={recoveryForm.handleSubmit(recoveryFormOnSubmit)} className="space-y-8 max-w-3xl mx-auto">
 
                                     <p className="text-sm mb-5">Input your e-mail to recover your password</p>
                                     <FormField
                                         control={recoveryForm.control}
                                         name="recoveryEmail"
+                                        data-testid="recovery-email-input"
                                         render={({field}) => (
                                             <FormItem className="mb-5">
                                                 <FormControl>
                                                     <Input
                                                         placeholder="Recovery E-mail"
                                                         type="email"
+                                                        data-testid="recovery-email-input"
                                                         {...field} />
                                                 </FormControl>
                                                 <FormMessage/>
@@ -217,9 +220,9 @@ function Login() {
                                         )}
                                     />
 
-                                    <Button className="w-full mb-5" type="submit">Submit</Button>
+                                    <Button data-testid="recovery-submit-button" className="w-full mb-5" type="submit">Submit</Button>
                                     <div className="w-full flex justify-end">
-                                        <Button variant="ghost" onClick={() => setActiveForm('login')}>Back</Button>
+                                        <Button data-testid="back-button" variant="ghost" onClick={() => setActiveForm('login')}>Back</Button>
                                     </div>
                                 </form>
                             </Form>
